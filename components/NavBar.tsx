@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Projects', href: '/projects' },
+//  { label: 'Projects', href: '/projects' }, add projects later
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/5 ${
-        scrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-6'
+        scrolled ? 'bg-black/90 -blur-md py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">

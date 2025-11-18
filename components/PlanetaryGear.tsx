@@ -1,7 +1,6 @@
-'use client'
 import React from 'react';
 
-interface GearPathProps {
+export interface GearPathProps {
   teeth: number;
   radius: number;
   holeRadius?: number; // For center hole
@@ -9,7 +8,7 @@ interface GearPathProps {
 }
 
 // Helper to create gear SVG path
-const createGearPath = ({ teeth, radius, holeRadius = 0, isRing = false }: GearPathProps): string => {
+export const createGearPath = ({ teeth, radius, holeRadius = 0, isRing = false }: GearPathProps): string => {
   const points: {x: number, y: number}[] = [];
   
   // Module calculation: M = 2R / N
@@ -81,8 +80,6 @@ const createGearPath = ({ teeth, radius, holeRadius = 0, isRing = false }: GearP
 
   return d;
 };
-
-
 
 export const PlanetaryGearSystem: React.FC = () => {
   // Revised Configuration for "Way more teeth that are smaller"
@@ -173,6 +170,12 @@ export const PlanetaryGearSystem: React.FC = () => {
         </g>
 
       </svg>
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };
