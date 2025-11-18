@@ -3,7 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import GearIcon from './GearIcon'
 
-const PlanetaryGears: React.FC = () => {
+const PlanetaryGearsystem: React.FC = () => {
     const orbitRadius = 48; // pixels
 
     const planetStyle = (angle: number): React.CSSProperties => ({
@@ -52,4 +52,4 @@ const PlanetaryGears: React.FC = () => {
     )
 }
 
-export default PlanetaryGears
+export default PlanetaryGearsystem
