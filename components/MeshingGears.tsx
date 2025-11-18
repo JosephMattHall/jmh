@@ -135,7 +135,7 @@ export const MeshingGears: React.FC = () => {
 
                 {/* Small Gear (Driver) */}
                 <g transform={`translate(${x2}, 0)`}>
-                    <g style={{ animation: `spinRight 5s linear infinite reverse` }}> 
+                    <g style={{ animation: `spinLeft 5s linear infinite reverse` }}> 
                          <g transform={`rotate(${offsetAngle2})`}>
                             <path 
                                 d={createGearPath({ teeth: teeth2, radius: radius2, holeRadius: 12 })} 

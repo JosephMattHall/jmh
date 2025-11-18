@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 
 const MeshingGears = dynamic(() => import('../components/MeshingGears'), { ssr: false });
 
-
 import React from 'react';
 
 import Link from 'next/link';
