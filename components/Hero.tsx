@@ -1,18 +1,26 @@
+'use client'
+
+// app/page.tsx or wherever Hero imports it
+import dynamic from 'next/dynamic';
+
+const MeshingGears = dynamic(() => import('../components/MeshingGears'), { ssr: false });
+
+
 import React from 'react';
-import MeshingGears from './MeshingGears';
+
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center overflow-hidden pt-20 pb-10 px-6 bg-[#0a0a0a]/90">
+    <section className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-start overflow-hidden pt-20 pb-10 px-6 bg-[#0a0a0a]/90">
       
       {/* Background Grid Effect */}
       <div className="absolute inset-0 w-full h-full z-0 opacity-20 pointer-events-none">
-         <div className="w-full h-full" style={{ 
-             backgroundImage: 'radial-gradient(#444 1px, transparent 1px)', 
-             backgroundSize: '40px 40px' 
-         }} />
+        <div className="w-full h-full" style={{ 
+          backgroundImage: 'radial-gradient(#444 1px, transparent 1px)', 
+          backgroundSize: '40px 40px' 
+        }} />
       </div>
 
       {/* Left Content */}
@@ -48,7 +56,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Right Content - Gear Animation */}
-      <div className="relative z-10 w-full md:w-1/2 mt-16 md:mt-0 flex justify-center items-center p-8">
+      <div className="relative z-10 w-full md:w-1/2 mt-16 md:mt-0 flex justify-center items-start p-8">
         <div className="relative w-full max-w-lg">
             <MeshingGears />
         </div>

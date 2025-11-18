@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { motion, Variants } from 'framer-motion'
+import PageLayout from '@/components/PageLayout'
 
 const GithubIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -53,39 +54,39 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-gray-800/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-lg w-full max-w-2xl text-center">
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h1 className="text-4xl font-bold text-white mb-2">Get In Touch</h1>
-        <p className="text-gray-300 mb-8">Feel free to reach out.</p>
-      </motion.div>
 
-      <motion.div 
-        className="space-y-6"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {contacts.map((contact, index) => (
-          <motion.a
-            key={index}
-            href={contact.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center p-4 bg-gray-700/70 rounded-xl hover:bg-gray-700/90 transition-all duration-300 group"
-            variants={itemVariants}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <div className="text-cyan-400 mr-4 group-hover:scale-110 transition-transform">
-              {contact.icon}
-            </div>
-            <div className="text-left">
-              <div className="font-semibold text-white">{contact.label}</div>
-              <div className="text-gray-300 group-hover:text-cyan-300 transition-colors">{contact.value}</div>
-            </div>
-          </motion.a>
-        ))}
-      </motion.div>
-    </div>
+      <PageLayout title="Contact Me">
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <h1 className="text-4xl font-bold text-white mb-2">Contact Me</h1>
+        </motion.div>
+
+        <motion.div 
+          className="space-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {contacts.map((contact, index) => (
+            <motion.a
+              key={index}
+              href={contact.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center p-4 bg-black/70 rounded-xl hover:bg-gray-700/90 transition-all duration-300 group"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="text-cyan-400 mr-4 group-hover:scale-110 transition-transform">
+                {contact.icon}
+              </div>
+              <div className="text-left">
+                <div className="font-semibold text-white">{contact.label}</div>
+                <div className="text-gray-300 group-hover:text-cyan-300 transition-colors">{contact.value}</div>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
+      </PageLayout>
   )
 }

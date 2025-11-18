@@ -1,41 +1,54 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import PageLayout from '@/components/PageLayout';
-import PlanetaryGearSystem from '@/components/PlanetaryGearsystem';
+import PlanetaryGearSystem from '@/components/PlanetaryGear';
+import PCBBoard from '@/components/PCBBoard';
 
-export default function AboutPage() {
+const AboutPage: React.FC = () => {
   return (
-    <div className="min-h-screen w-full flex ...">
+    <PageLayout title="About Me">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      <PageLayout title="About Me">
-        <motion.div
-          className="w-full flex flex-col md:flex-row items-center gap-8"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-        >
-          {/* Left: Animated planetary gear */}
-          <div className="flex-shrink-0 w-48 h-48 rounded-full bg-gray-900/30 border border-white/5 flex items-center justify-center shadow-lg overflow-hidden">
-            {/* Planetary gear is a client component with its own animations */}
-            <PlanetaryGearSystem />
+        {/* Planetary Gear Animation (Top Left) */}
+        <div className="flex justify-center items-center w-full bg-black/20 rounded-xl p-6 border border-white/5 aspect-square lg:aspect-auto lg:h-80">
+          <div className="w-full max-w-[280px]">
+            <PlanetaryGearSystem/>
           </div>
+        </div>
 
-          {/* Right: Text */}
-          <div className="text-gray-200 max-w-xl space-y-4">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white">About Me</h3>
+        {/* Mechanical Precision Section (Top Right) */}
+        <div className="flex flex-col justify-center space-y-6">
+          <div className="inline-block w-12 h-1 bg-white mb-2 opacity-50"></div>
+          <h3 className="text-2xl font-bold text-white tracking-tight uppercase">
+            Mechanical Precision in Digital Logic
+          </h3>
+          <p className="text-gray-400 text-lg leading-relaxed font-light">
+            I view software architecture through the lens of mechanical systems. Just as a planetary gearbox relies on perfect gear ratios and minimal friction to transmit torque efficiently, complex web applications require optimized state management and component hierarchies to deliver seamless user experiences. Every function is a moving part; every module, a sub-assembly.
+          </p>
+        </div>
 
-            <p className="text-base text-gray-300 leading-relaxed">
-              My name is Joseph Hall. I'm a Hobbyist Developer, Maker, and a real-life Customer Service Agent. I've been into programming for quite a few years — mostly building tools and bots to solve my own problems. Now that I'm an employed adult I have the resources to pursue robotics, physical product design, and manufacturing.
-            </p>
+        {/* Who I Am Section (Bottom Left) */}
+        <div className="flex flex-col justify-center space-y-6 order-last lg:order-none">
+          <div className="inline-block w-12 h-1 bg-white mb-2 opacity-50"></div>
+          <h3 className="text-2xl font-bold text-white tracking-tight uppercase">
+            Who I Am
+          </h3>
+          <p className="text-gray-400 text-lg leading-relaxed font-light">
+            My name is Joseph Hall. I’m a Hobbiest Developer, Maker, and real-life Customer Service Agent. I’ve been into programming for years, building tools I needed and creating bots. Now I can pursue robotics, product design, and manufacturing. Feel free to reach out on social media or email.
+          </p>
+        </div>
 
-            <p className="text-base text-gray-300 leading-relaxed">
-              Feel free to reach out on social media or shoot me an email — I love talking about projects, ideas, and ways to make things that work.
-            </p>
+        {/* PCB Animation (Bottom Right) */}
+        <div className="flex justify-center items-center w-full bg-black/20 rounded-xl p-6 border border-white/5 aspect-square lg:aspect-auto lg:h-80">
+          <div className="w-full max-w-[350px]">
+            <PCBBoard />
           </div>
-        </motion.div>
-      </PageLayout>
-    </div>
+        </div>
+
+      </div>
+    </PageLayout>
   );
-}
+};
+
+export default AboutPage;
