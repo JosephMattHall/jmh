@@ -27,7 +27,7 @@ const AboutPage: React.FC = () => {
                    </h2>
                    <div className="h-1 w-12 bg-white/30 mb-3 rounded-full mx-auto sm:mx-0"></div>
                    <p className="text-gray-400 font-mono text-sm tracking-[0.1em] uppercase">
-                       Hobbiest | Developer | Maker
+                       Developer | Maker
                    </p>
                </div>
            </div>
