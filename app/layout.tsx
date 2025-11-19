@@ -4,8 +4,8 @@ import type { ReactNode } from 'react'
 import Navbar from '@/components/NavBar';
 
 export const metadata = {
-  title: 'Under Construction - Joseph Hall',
-  description: 'Under construction site for Joseph Hall',
+  title: 'Joseph Matthew Hall',
+  description: 'A work in progress',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
