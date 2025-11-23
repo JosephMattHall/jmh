@@ -10,53 +10,56 @@ interface ProjectCardProps {
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
-    <Link href={`/projects/${project.slug}`}>
-        <motion.div
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="block rounded-xl overflow-hidden shadow-lg bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-gray-600 transition-colors h-full flex flex-col"
-        >
-            <div className="relative h-48 w-full overflow-hidden">
-                <img
-                    src={project.main_image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-full flex items-center gap-1">
-                    <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-                    <span className="text-xs font-medium text-white">
-                        {project.rating ? project.rating.toFixed(1) : "N/A"}
-                    </span>
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+    return (
+        <Link href={`/projects/${project.slug}`} className="block h-full">
+            <motion.div
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-900/20 h-full flex flex-col group"
+            >
+                <div className="relative h-48 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60 z-10" />
+                    <img
+                        src={project.main_image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    />
+                    {project.rating !== undefined && (
+                        <div className="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 border border-white/10">
+                            <span className="text-yellow-400 text-xs">★</span>
+                            <span className="text-white text-xs font-bold">{project.rating.toFixed(1)}</span>
+                        </div>
+                    )}
                 </div>
-            </div>
 
-            <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 text-sm line-clamp-3 mb-4 flex-grow">
-                    {project.description}
-                </p>
+                <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-1">
+                        {project.title}
+                    </h3>
 
-                {project.technologies?.length > 0 && (
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+                        {project.summary}
+                    </p>
+
                     <div className="flex flex-wrap gap-2 mt-auto">
-                        {project.technologies.slice(0, 3).map(tech => (
+                        {project.technologies?.slice(0, 3).map(tech => (
                             <span
                                 key={tech}
-                                className="text-[10px] font-medium bg-gray-700/50 text-gray-300 border border-gray-600/50 rounded-full px-2 py-1"
+                                className="text-xs font-medium px-2 py-1 bg-gray-800 text-gray-300 rounded border border-gray-700 group-hover:border-gray-600 transition-colors"
                             >
                                 {tech}
                             </span>
                         ))}
-                        {project.technologies.length > 3 && (
-                            <span className="text-[10px] font-medium text-gray-500 px-1 py-1">
+                        {project.technologies?.length > 3 && (
+                            <span className="text-xs font-medium px-2 py-1 bg-gray-800 text-gray-500 rounded border border-gray-700">
                                 +{project.technologies.length - 3}
                             </span>
                         )}
                     </div>
-                )}
-            </div>
-        </motion.div>
-    </Link>
-);
+                </div>
+            </motion.div>
+        </Link>
+    );
+};
 
 export default ProjectCard;

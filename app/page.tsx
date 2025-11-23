@@ -6,11 +6,14 @@ import LatestUpdates from '@/components/LatestUpdates'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
+import { getSiteContent } from '@/lib/siteContent'
+
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const projects = await getProjects();
   const latestProject = projects.length > 0 ? projects[0] : null;
+  const heroContent = await getSiteContent('home_hero');
 
   // Serialize timestamps for latestProject
   const serializedLatestProject = latestProject ? {
@@ -29,7 +32,7 @@ export default async function HomePage() {
   return (
     <div className="bg-black min-h-screen w-full flex flex-col items-center justify-start">
 
-      <Hero />
+      <Hero content={heroContent?.content} />
 
       {serializedLatestProject && (
         <section className="w-full py-20 px-6 bg-[#0f0f0f]">
