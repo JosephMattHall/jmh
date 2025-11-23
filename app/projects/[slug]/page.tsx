@@ -1,5 +1,6 @@
 import { getProjectBySlug } from "@/lib/projects";
 import ProjectContent from "@/components/ProjectContent";
+import ShareButton from "@/components/ShareButton";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -83,6 +84,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
                 <span>Visit Website</span>
               </a>
             )}
+            <ShareButton title={project.title} slug={project.slug} />
           </div>
 
           <div className="border-t border-gray-800 pt-10">

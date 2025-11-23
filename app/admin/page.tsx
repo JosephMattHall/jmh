@@ -35,13 +35,21 @@ const AdminDashboard = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-                    <Link
-                        href="/admin/new"
-                        className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
-                    >
-                        <Plus size={20} />
-                        Create New Project
-                    </Link>
+                    <div className="flex gap-4">
+                        <Link
+                            href="/admin/updates"
+                            className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                        >
+                            Manage Updates
+                        </Link>
+                        <Link
+                            href="/admin/new"
+                            className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                        >
+                            <Plus size={20} />
+                            Create New Project
+                        </Link>
+                    </div>
                 </div>
 
                 <div className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 shadow-xl">
