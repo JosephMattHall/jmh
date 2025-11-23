@@ -21,7 +21,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 
   return (
 
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
+    <div className="min-h-screen bg-gray-900 text-gray-100 p-8 pt-24">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">

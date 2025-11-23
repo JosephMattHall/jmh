@@ -139,7 +139,7 @@ const AdminProjectEditor: React.FC<AdminProjectEditorProps> = ({ initialProject 
     };
 
     return (
-        <div className="max-w-5xl mx-auto p-8 bg-gray-900 min-h-screen text-white">
+        <div className="max-w-5xl mx-auto px-8 pb-8 pt-24 bg-gray-900 min-h-screen text-white">
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-bold">
                     {initialProject ? "Edit Project" : "Create New Project"}

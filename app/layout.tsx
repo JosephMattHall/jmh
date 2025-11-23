@@ -2,6 +2,7 @@ import './globals.css'
 import React from 'react'
 import type { ReactNode } from 'react'
 import Navbar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'Joseph Matthew Hall',
@@ -11,9 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-black flex  items-center justify-center p-6">
+      <body className="min-h-screen bg-black text-white flex flex-col">
         <Navbar />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
