@@ -4,6 +4,8 @@ import { motion, Variants } from 'framer-motion'
 import PageLayout from '@/components/PageLayout'
 import { Send, Mail, Github } from 'lucide-react'
 
+import { siteContent } from "@/lib/siteContent"
+
 export default function ContactPage() {
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
@@ -47,9 +49,9 @@ export default function ContactPage() {
           className="space-y-8"
         >
           <div>
-            <h1 className="text-4xl font-bold text-white mb-4">Get in Touch</h1>
+            <h1 className="text-4xl font-bold text-white mb-4">{siteContent.contact.headline}</h1>
             <p className="text-gray-400 leading-relaxed">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+              {siteContent.contact.body}
             </p>
           </div>
 
@@ -63,12 +65,12 @@ export default function ContactPage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-sm font-medium text-gray-400">Email</h3>
-                <p className="text-white font-medium">joseph@josephmatthewhall.com</p>
+                <p className="text-white font-medium">{siteContent.email}</p>
               </div>
             </a>
 
             <a
-              href="https://github.com/josephmatthall"
+              href={siteContent.github.url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center p-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:bg-gray-800 hover:border-purple-500/50 transition-all group"
@@ -78,7 +80,7 @@ export default function ContactPage() {
               </div>
               <div className="ml-4">
                 <h3 className="text-sm font-medium text-gray-400">GitHub</h3>
-                <p className="text-white font-medium">josephmatthall</p>
+                <p className="text-white font-medium">{siteContent.github.username}</p>
               </div>
             </a>
           </div>

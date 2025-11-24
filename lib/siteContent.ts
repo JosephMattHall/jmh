@@ -1,29 +1,31 @@
-import { db } from "./firestore";
-import {
-    doc,
-    getDoc,
-    setDoc,
-    Timestamp
-} from "firebase/firestore";
-import { SiteContent } from "@/types/siteContent";
-
-const COLLECTION_NAME = "site_content";
-
-export const getSiteContent = async (id: string): Promise<SiteContent | null> => {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-        return { id: docSnap.id, ...docSnap.data() } as SiteContent;
-    } else {
-        return null;
-    }
+export type SiteContent = {
+  name: string;
+  email?: string;
+  phone?: string;
+  github?: string;
+  hero: {
+    headline: string;
+    body: string;
+  };
+  about: string;
 };
 
-export const updateSiteContent = async (id: string, content: string) => {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await setDoc(docRef, {
-        content,
-        updated_at: Timestamp.now()
-    }, { merge: true });
+export const siteContent: SiteContent = {
+  name: "Joseph Hall",
+  email: "you@example.com",
+  phone: "(555) 555-5555",
+  github: {
+    url: "https://github.com/JosephMattHall",
+    username: "JosephMattHall",
+    },
+  hero: {
+    headline: "Build. Learn. Improve.",
+    body: "I work on small apps, hardware projects, and 3D printed designs — a steady roll of experiments and improvements.",
+  },
+  contact: {
+    headline: "Contact Me",
+    body: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+  },
+  about:
+    "My name is Joseph Hall. I create small applications, prototypes, and tech-focused projects, focusing on practical solutions. I enjoy problem-solving, learning new tools, and steadily improving my work. This site highlights the projects I’m building and the ideas I’m developing along the way.",
 };

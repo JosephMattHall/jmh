@@ -6,14 +6,14 @@ import LatestUpdates from '@/components/LatestUpdates'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
-import { getSiteContent } from '@/lib/siteContent'
+import { siteContent } from "@/lib/siteContent"
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const projects = await getProjects();
   const latestProject = projects.length > 0 ? projects[0] : null;
-  const heroContent = await getSiteContent('home_hero');
+  const heroContent = siteContent.hero;
 
   // Serialize timestamps for latestProject
   const serializedLatestProject = latestProject ? {
