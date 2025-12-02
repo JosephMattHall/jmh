@@ -2,7 +2,10 @@ export type SiteContent = {
   name: string;
   email?: string;
   phone?: string;
-  github?: string;
+  github: {
+    url: string;
+    username: string;
+  };
   hero: {
     headline: string;
     body: string;
