@@ -13,10 +13,24 @@ const navItems: NavItem[] = [
   { label: 'Contact', href: '/contact' },
 ];
 
+const adminNavItems: NavItem[] = [
+  { label: 'Dashboard', href: '/admin' },
+  { label: 'Projects', href: '/admin/projects' },
+  { label: 'Updates', href: '/admin/updates' },
+  { label: 'Exit', href: '/' },
+];
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() || '/';
   const [scrolled, setScrolled] = useState(false);
+
+  const isAdmin = pathname.startsWith('/admin');
+  const currentNavItems = isAdmin ? adminNavItems : navItems;
+  const accentColor = isAdmin ? 'text-yellow-500' : 'text-blue-500';
+  const accentBg = isAdmin ? 'bg-yellow-500' : 'bg-blue-500';
+  const accentBorder = isAdmin ? 'border-yellow-500/50' : 'border-blue-500/50';
+  const accentShadow = isAdmin ? 'shadow-[0_0_8px_rgba(234,179,8,0.5)]' : 'shadow-[0_0_8px_rgba(59,130,246,0.5)]';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,14 +53,14 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold tracking-widest text-white hover:text-gray-300 transition-colors relative group">
-          JMH
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+        <Link href={isAdmin ? "/admin" : "/"} className="text-2xl font-bold tracking-widest text-white hover:text-gray-300 transition-colors relative group">
+          {isAdmin ? "JMH ADMIN" : "JMH"}
+          <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${accentBg} transition-all group-hover:w-full`}></span>
         </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
+          {currentNavItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
@@ -55,7 +69,7 @@ const Navbar: React.FC = () => {
             >
               {item.label.toUpperCase()}
               {pathname === item.href && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 ${accentBg} ${accentShadow}`}></span>
               )}
             </Link>
           ))}
@@ -77,12 +91,12 @@ const Navbar: React.FC = () => {
           }`}
       >
         <div className="flex flex-col h-full pt-24 px-8 space-y-6">
-          {navItems.map((item) => (
+          {currentNavItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`text-lg font-medium tracking-wider block py-2 border-b border-white/5 transition-colors ${pathname === item.href ? 'text-white border-blue-500/50 pl-2' : 'text-gray-400 hover:text-white hover:pl-2'
+              className={`text-lg font-medium tracking-wider block py-2 border-b border-white/5 transition-colors ${pathname === item.href ? `text-white ${accentBorder} pl-2` : 'text-gray-400 hover:text-white hover:pl-2'
                 }`}
             >
               {item.label.toUpperCase()}
