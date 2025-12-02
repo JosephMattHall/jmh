@@ -8,25 +8,21 @@ const MeshingGears = dynamic(() => import('../components/MeshingGears'), { ssr: 
 import React from 'react';
 
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import ScrollDownButton from './ScrollDownButton';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 interface HeroProps {
-  content?: string;
+  headline?: string;
+  body?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ content }) => {
-  const defaultContent = `
-    <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-tight">
-      UNDER <br />
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500">
-        CONSTRUCTION
-      </span>
-    </h1>
-    <p class="text-2xl text-gray-400 font-light tracking-wide">
-      Check Back Soon!
-    </p>
+const Hero: React.FC<HeroProps> = ({ headline, body }) => {
+  const defaultHeadline = `
+    UNDER <br />
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500">
+      CONSTRUCTION
+    </span>
   `;
+  const defaultBody = "Check Back Soon!";
 
   return (
     <section className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-start overflow-hidden pt-20 pb-10 px-6 bg-[#0a0a0a]/90">
@@ -45,10 +41,15 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
           <span className="text-xs font-medium tracking-widest text-gray-300">HOBBIEST | DEVELOPER | MAKER</span>
         </div>
 
-        <div
-          className="space-y-6"
-          dangerouslySetInnerHTML={{ __html: content || defaultContent }}
-        />
+        <div className="space-y-6">
+          <h1
+            className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-tight"
+            dangerouslySetInnerHTML={{ __html: headline || defaultHeadline }}
+          />
+          <p className="text-2xl text-gray-400 font-light tracking-wide">
+            {body || defaultBody}
+          </p>
+        </div>
 
         <div className="flex items-center space-x-4 pt-8">
           <Link
@@ -75,8 +76,13 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
       </div>
 
       {/* Scroll Down Button */}
-      {/* Scroll Down Button */}
-      <ScrollDownButton />
+      <button
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400 hover:text-white transition-colors animate-bounce z-20"
+      >
+        <span className="text-sm font-medium tracking-widest mb-1">MORE</span>
+        <ChevronDown size={24} />
+      </button>
     </section>
   );
 };

@@ -32,7 +32,10 @@ export default async function HomePage() {
   return (
     <div className="bg-black min-h-screen w-full flex flex-col items-center justify-start">
 
-      <Hero content={heroContent?.content} />
+      <Hero
+        headline={heroContent?.headline}
+        body={heroContent?.body}
+      />
 
       {serializedLatestProject && (
         <section className="w-full py-20 px-6 bg-[#0f0f0f]">
