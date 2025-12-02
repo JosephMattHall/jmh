@@ -8,7 +8,8 @@ const MeshingGears = dynamic(() => import('../components/MeshingGears'), { ssr: 
 import React from 'react';
 
 import Link from 'next/link';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import ScrollDownButton from './ScrollDownButton';
 
 interface HeroProps {
   content?: string;
@@ -74,13 +75,8 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
       </div>
 
       {/* Scroll Down Button */}
-      <button
-        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400 hover:text-white transition-colors animate-bounce z-20"
-      >
-        <span className="text-sm font-medium tracking-widest mb-1">MORE</span>
-        <ChevronDown size={24} />
-      </button>
+      {/* Scroll Down Button */}
+      <ScrollDownButton />
     </section>
   );
 };
